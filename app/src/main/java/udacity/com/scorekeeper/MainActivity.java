@@ -8,14 +8,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final static String SCORE_TEAM_A = "scoreTeamA";
-    private final static String SCORE_TEAM_B = "scoreTeamB";
-    private final static String NUMBER_OF_CORNER_TEAM_A = "numberOfCornerTeamA";
-    private final static String NUMBER_OF_CORNER_TEAM_B = "numberOfCornerTeamB";
-    private final static String NUMBER_OF_YELLOW_CARD_TEAM_A = "numberOfYellowCardTeamA";
-    private final static String NUMBER_OF_YELLOW_CARD_TEAM_B = "numberOfYellowCardTeamB";
-    private final static String NUMBER_OF_RED_CARD_TEAM_A = "numberOfRedCardTeamA";
-    private final static String NUMBER_OF_RED_CARD_TEAM_B = "numberOfRedCardTeamB";
+    private final static String SCORE_TEAM_A = "score team A";
+    private final static String SCORE_TEAM_B = "score team B";
+    private final static String NUMBER_OF_CORNER_TEAM_A = "number of corner team A";
+    private final static String NUMBER_OF_CORNER_TEAM_B = "number of corner team B";
+    private final static String NUMBER_OF_YELLOW_CARD_TEAM_A = "number of yellow card team A";
+    private final static String NUMBER_OF_YELLOW_CARD_TEAM_B = "number of yellow card team B";
+    private final static String NUMBER_OF_RED_CARD_TEAM_A = "number of red card team A";
+    private final static String NUMBER_OF_RED_CARD_TEAM_B = "number of red card team B";
 
     private int scoreTeamA = 0;
     private int scoreTeamB = 0;
