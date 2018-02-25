@@ -52,47 +52,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState != null) {
-            savedInstanceState.getInt(SCORE_TEAM_A);
-            savedInstanceState.getInt(SCORE_TEAM_B);
-            savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_A);
-            savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_B);
-            savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_A);
-            savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_B);
-            savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_A);
-            savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_B);
-        }
         initialization();
         display();
     }
 
-//    private void getSavedStates(Bundle savedInstanceState) {
-//        if (savedInstanceState != null) {
-//            savedInstanceState.getInt(SCORE_TEAM_A, 0);
-//            savedInstanceState.getInt(SCORE_TEAM_B, 0);
-//            savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_A, 0);
-//            savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_B, 0);
-//            savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_A, 0);
-//            savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_B, 0);
-//            savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_A, 0);
-//            savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_B, 0);
-//            display();
-//        }
-//    }
-
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//        savedInstanceState.getInt(SCORE_TEAM_A);
-//        savedInstanceState.getInt(SCORE_TEAM_B);
-//        savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_A);
-//        savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_B);
-//        savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_A);
-//        savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_B);
-//        savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_A);
-//        savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_B);
-//        display();
-//    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        scoreTeamA = savedInstanceState.getInt(SCORE_TEAM_A);
+        scoreTeamB = savedInstanceState.getInt(SCORE_TEAM_B);
+        numberOfCornerTeamA = savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_A);
+        numberOfCornerTeamB = savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_B);
+        numberOfYellowCardTeamA = savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_A);
+        numberOfYellowCardTeamB = savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_B);
+        numberOfRedCardTeamA = savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_A);
+        numberOfRedCardTeamB = savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_B);
+        display();
+    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
