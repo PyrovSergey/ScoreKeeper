@@ -1,66 +1,113 @@
 package udacity.com.scorekeeper;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // Tracks the score for Team A
-    int scoreTeamA = 0;
+    private final static String SCORE_TEAM_A = "scoreTeamA";
+    private final static String SCORE_TEAM_B = "scoreTeamB";
+    private final static String NUMBER_OF_CORNER_TEAM_A = "numberOfCornerTeamA";
+    private final static String NUMBER_OF_CORNER_TEAM_B = "numberOfCornerTeamB";
+    private final static String NUMBER_OF_YELLOW_CARD_TEAM_A = "numberOfYellowCardTeamA";
+    private final static String NUMBER_OF_YELLOW_CARD_TEAM_B = "numberOfYellowCardTeamB";
+    private final static String NUMBER_OF_RED_CARD_TEAM_A = "numberOfRedCardTeamA";
+    private final static String NUMBER_OF_RED_CARD_TEAM_B = "numberOfRedCardTeamB";
 
-    // Tracks the score for Team B
-    int scoreTeamB = 0;
+    private int scoreTeamA = 0;
+    private int scoreTeamB = 0;
+    private int numberOfCornerTeamA = 0;
+    private int numberOfCornerTeamB = 0;
+    private int numberOfYellowCardTeamA = 0;
+    private int numberOfYellowCardTeamB = 0;
+    private int numberOfRedCardTeamA = 0;
+    private int numberOfRedCardTeamB = 0;
 
-    // Tracks the corner for Team A
-    int numberOfCornerTeamA = 0;
+    private TextView scoreViewATeam;
+    private TextView redCardViewATeam;
+    private TextView yellowCardViewATeam;
+    private TextView cornerViewATeam;
 
-    // Tracks the corner for Team B
-    int numberOfCornerTeamB = 0;
+    private TextView scoreViewBTeam;
+    private TextView redCardViewBTeam;
+    private TextView yellowCardViewBTeam;
+    private TextView cornerViewBTeam;
 
-    // Tracks the yellow card for Team A
-    int numberOfYellowCardTeamA = 0;
+    private Button button_red_card_a;
+    private Button button_yellow_card_a;
+    private Button button_corner_a;
+    private Button button_goal_a;
 
-    // Tracks the yellow card for Team B
-    int numberOfYellowCardTeamB = 0;
+    private Button button_red_card_b;
+    private Button button_yellow_card_b;
+    private Button button_corner_b;
+    private Button button_goal_b;
 
-    // Tracks the red card for Team A
-    int numberOfRedCardTeamA = 0;
-
-    // Tracks the red card for Team B
-    int numberOfRedCardTeamB = 0;
-
-    TextView scoreViewATeam;
-    TextView redCardViewATeam;
-    TextView yellowCardViewATeam;
-    TextView cornerViewATeam;
-
-    TextView scoreViewBTeam;
-    TextView redCardViewBTeam;
-    TextView yellowCardViewBTeam;
-    TextView cornerViewBTeam;
-
-    Button button_red_card_a;
-    Button button_yellow_card_a;
-    Button button_corner_a;
-    Button button_goal_a;
-
-    Button button_red_card_b;
-    Button button_yellow_card_b;
-    Button button_corner_b;
-    Button button_goal_b;
-
-    Button button_reset;
+    private Button button_reset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState != null) {
+            savedInstanceState.getInt(SCORE_TEAM_A);
+            savedInstanceState.getInt(SCORE_TEAM_B);
+            savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_A);
+            savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_B);
+            savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_A);
+            savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_B);
+            savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_A);
+            savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_B);
+        }
+        initialization();
+        display();
+    }
 
+//    private void getSavedStates(Bundle savedInstanceState) {
+//        if (savedInstanceState != null) {
+//            savedInstanceState.getInt(SCORE_TEAM_A, 0);
+//            savedInstanceState.getInt(SCORE_TEAM_B, 0);
+//            savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_A, 0);
+//            savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_B, 0);
+//            savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_A, 0);
+//            savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_B, 0);
+//            savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_A, 0);
+//            savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_B, 0);
+//            display();
+//        }
+//    }
+
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        savedInstanceState.getInt(SCORE_TEAM_A);
+//        savedInstanceState.getInt(SCORE_TEAM_B);
+//        savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_A);
+//        savedInstanceState.getInt(NUMBER_OF_CORNER_TEAM_B);
+//        savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_A);
+//        savedInstanceState.getInt(NUMBER_OF_YELLOW_CARD_TEAM_B);
+//        savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_A);
+//        savedInstanceState.getInt(NUMBER_OF_RED_CARD_TEAM_B);
+//        display();
+//    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(SCORE_TEAM_A, scoreTeamA);
+        outState.putInt(SCORE_TEAM_B, scoreTeamB);
+        outState.putInt(NUMBER_OF_CORNER_TEAM_A, numberOfCornerTeamA);
+        outState.putInt(NUMBER_OF_CORNER_TEAM_B, numberOfCornerTeamB);
+        outState.putInt(NUMBER_OF_YELLOW_CARD_TEAM_A, numberOfYellowCardTeamA);
+        outState.putInt(NUMBER_OF_YELLOW_CARD_TEAM_B, numberOfYellowCardTeamB);
+        outState.putInt(NUMBER_OF_RED_CARD_TEAM_A, numberOfRedCardTeamA);
+        outState.putInt(NUMBER_OF_RED_CARD_TEAM_B, numberOfRedCardTeamB);
+    }
+
+    private void initialization() {
         scoreViewATeam = (TextView) findViewById(R.id.team_a_score);
         redCardViewATeam = (TextView) findViewById(R.id.team_a_red_card);
         yellowCardViewATeam = (TextView) findViewById(R.id.team_a_yellow_card);
@@ -96,31 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button_reset.setOnClickListener(this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimpSlifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    // Resets the score for both teams back to 0.
-    public void resetScore() {
+    private void resetScore() {
         scoreTeamA = 0;
         scoreTeamB = 0;
         numberOfCornerTeamA = 0;
@@ -132,16 +155,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         display();
     }
 
-    public void display() {
-         scoreViewATeam.setText(scoreTeamA);
-         redCardViewATeam.setText(numberOfRedCardTeamA);
-         yellowCardViewATeam.setText(numberOfYellowCardTeamA);
-         cornerViewATeam.setText(numberOfCornerTeamA);
+    private void display() {
+        scoreViewATeam.setText(String.valueOf(scoreTeamA));
+        redCardViewATeam.setText(String.valueOf(numberOfRedCardTeamA));
+        yellowCardViewATeam.setText(String.valueOf(numberOfYellowCardTeamA));
+        cornerViewATeam.setText(String.valueOf(numberOfCornerTeamA));
 
-         scoreViewBTeam.setText(scoreTeamB);
-         redCardViewBTeam.setText(numberOfRedCardTeamB);
-         yellowCardViewBTeam.setText(numberOfYellowCardTeamB);
-         cornerViewBTeam.setText(numberOfCornerTeamB);
+        scoreViewBTeam.setText(String.valueOf(scoreTeamB));
+        redCardViewBTeam.setText(String.valueOf(numberOfRedCardTeamB));
+        yellowCardViewBTeam.setText(String.valueOf(numberOfYellowCardTeamB));
+        cornerViewBTeam.setText(String.valueOf(numberOfCornerTeamB));
     }
 
     @Override
