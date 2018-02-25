@@ -36,17 +36,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView yellowCardViewBTeam;
     private TextView cornerViewBTeam;
 
-    private Button button_red_card_a;
-    private Button button_yellow_card_a;
-    private Button button_corner_a;
-    private Button button_goal_a;
+    Button mButtonRedCardA;
+    Button mButtonYellowCardA;
+    Button mButtonCornerA;
+    Button mButtonGoalA;
 
-    private Button button_red_card_b;
-    private Button button_yellow_card_b;
-    private Button button_corner_b;
-    private Button button_goal_b;
+    Button mButtonRedCardB;
+    Button mButtonYellowCardB;
+    Button mButtonCornerB;
+    Button mButtonGoalB;
 
-    private Button button_reset;
+    Button mButtonReset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,29 +118,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         yellowCardViewBTeam = (TextView) findViewById(R.id.team_b_yellow_card);
         cornerViewBTeam = (TextView) findViewById(R.id.team_b_corner);
 
-        button_red_card_a = (Button) findViewById(R.id.button_red_card_a);
-        button_yellow_card_a = (Button) findViewById(R.id.button_yellow_card_a);
-        button_corner_a = (Button) findViewById(R.id.button_corner_a);
-        button_goal_a = (Button) findViewById(R.id.button_goal_a);
+        mButtonRedCardA = (Button) findViewById(R.id.button_red_card_a);
+        mButtonYellowCardA = (Button) findViewById(R.id.button_yellow_card_a);
+        mButtonCornerA = (Button) findViewById(R.id.button_corner_a);
+        mButtonGoalA = (Button) findViewById(R.id.button_goal_a);
 
-        button_red_card_b = (Button) findViewById(R.id.button_red_card_b);
-        button_yellow_card_b = (Button) findViewById(R.id.button_yellow_card_b);
-        button_corner_b = (Button) findViewById(R.id.button_corner_b);
-        button_goal_b = (Button) findViewById(R.id.button_goal_b);
+        mButtonRedCardB = (Button) findViewById(R.id.button_red_card_b);
+        mButtonYellowCardB = (Button) findViewById(R.id.button_yellow_card_b);
+        mButtonCornerB = (Button) findViewById(R.id.button_corner_b);
+        mButtonGoalB = (Button) findViewById(R.id.button_goal_b);
 
-        button_reset = (Button) findViewById(R.id.button_reset);
+        mButtonReset = (Button) findViewById(R.id.button_reset);
 
-        button_red_card_a.setOnClickListener(this);
-        button_yellow_card_a.setOnClickListener(this);
-        button_corner_a.setOnClickListener(this);
-        button_goal_a.setOnClickListener(this);
+        mButtonRedCardA.setOnClickListener(this);
+        mButtonYellowCardA.setOnClickListener(this);
+        mButtonCornerA.setOnClickListener(this);
+        mButtonGoalA.setOnClickListener(this);
 
-        button_red_card_b.setOnClickListener(this);
-        button_yellow_card_b.setOnClickListener(this);
-        button_corner_b.setOnClickListener(this);
-        button_goal_b.setOnClickListener(this);
+        mButtonRedCardB.setOnClickListener(this);
+        mButtonYellowCardB.setOnClickListener(this);
+        mButtonCornerB.setOnClickListener(this);
+        mButtonGoalB.setOnClickListener(this);
 
-        button_reset.setOnClickListener(this);
+        mButtonReset.setOnClickListener(this);
     }
 
     private void resetScore() {
